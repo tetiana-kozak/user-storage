@@ -5,12 +5,20 @@
   font-weight: 400;
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.87);
+}
+html {
   background: #f8f8f8;
 }
 
 .container {
   width: 100%;
   padding: 0 16px;
+}
+
+.section-gap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
 }
 
 @media (min-width: 360px) {

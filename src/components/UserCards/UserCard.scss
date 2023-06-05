@@ -1,0 +1,28 @@
+.user-card {
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  border-radius: 10px;
+
+  .user-photo {
+    display: block;
+    height: 70px;
+    border-radius: 50%;
+  }
+
+  .user-description {
+    font-size: 16px;
+    line-height: 26px;
+    h4 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+  }
+}

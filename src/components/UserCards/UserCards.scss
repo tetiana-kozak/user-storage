@@ -1,0 +1,25 @@
+.user-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 360px) {
+}
+
+@media (min-width: 768px) {
+  .user-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .user-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 29px;
+  }
+}
+
+@media (min-width: 2560px) {
+}
