@@ -1,6 +1,6 @@
-import FeaturedSection from '../../components/FeaturedSection/FeaturedSection'
-import RegisterFormSection from '../../components/RegisterFormSection/RegisterFormSection'
-import UsersSection from '../../components/UsersSection/UsersSection'
+import FeaturedSection from '../../components/Sections/FeaturedSection/FeaturedSection'
+import RegisterFormSection from '../../components/Sections/RegisterFormSection/RegisterFormSection'
+import UsersSection from '../../components/Sections/UsersSection/UsersSection'
 import './Main.scss'
 
 type Props = {}
