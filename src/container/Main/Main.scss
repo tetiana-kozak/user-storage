@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  row-gap: 140px;
+
+  section:last-child {
+    margin-bottom: 100px;
+  }
+}
