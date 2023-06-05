@@ -1,5 +1,11 @@
+import SectionTitle from '../../Typography/SectionTitle/SectionTitle'
+
 type Props = {}
 const UsersSection = (props: Props) => {
-  return <section>UsersSection</section>
+  return (
+    <section>
+      <SectionTitle>Working with GET request</SectionTitle>
+    </section>
+  )
 }
 export default UsersSection
