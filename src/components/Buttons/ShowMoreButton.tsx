@@ -1,4 +1,4 @@
-import './ShowMoreButton.scss'
+import './Buttons.scss'
 
 type Props = {}
 
