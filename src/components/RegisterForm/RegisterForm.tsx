@@ -1,15 +1,36 @@
+import axios from 'axios'
 import SignUpButton from '../Buttons/SignUpButton'
 import './RegisterForm.scss'
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, useEffect } from 'react'
+
+type Positions = {
+  id: number
+  name: string
+}
 
 type Props = {}
+
 const RegisterForm = (props: Props) => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  // state for uploading file
+  const [selectedFile, setSelectedFile] = useState<any>(null)
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     setSelectedFile(file || null)
   }
+
+  // state for fetching positions for checkboxes
+  const [positions, setPositions] = useState<Positions[]>()
+
+  const fetchPositions = async () =>
+    await axios
+      .get('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
+      .then((data) => setPositions(data.data.positions))
+      .catch((error) => console.log('error: ', error))
+
+  useEffect(() => {
+    fetchPositions()
+  }, [])
 
   return (
     <div className="form-container">
@@ -35,21 +56,16 @@ const RegisterForm = (props: Props) => {
           placeholder="Phone"
           className="form-input"
         />
+
         <div className="position-buttons">
           <p>Select your position</p>
           <div className="position-buttons-options">
-            <div className="radio-button">
-              <input type="radio" name="position" id="frontend-developer" />
-              <label htmlFor="frontend-developer">Frontend developer</label>
-            </div>
-            <div className="radio-button">
-              <input type="radio" name="position" id="backend-developer" />
-              <label htmlFor="backend-developer">Backend developer</label>
-            </div>
-            <div className="radio-button">
-              <input type="radio" name="position" id="designer" />
-              <label htmlFor="designer">Designer</label>
-            </div>
+            {positions?.map((position) => (
+              <div className="radio-button" key={position.id}>
+                <input type="radio" name="position" id={position.name} />
+                <label htmlFor={position.name}>{position.name}</label>
+              </div>
+            ))}
           </div>
         </div>
 
