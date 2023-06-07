@@ -1,17 +1,22 @@
 import './UserCard.scss'
-import photo1 from '../../assets/photo-cover.svg'
 
-type Props = {}
+type Props = {
+  name: string
+  email: string
+  phone: string
+  position: string
+  photo: string
+}
 
-const UserCard = (props: Props) => {
+const UserCard = ({ name, email, phone, position, photo }: Props) => {
   return (
     <div className="user-card">
-      <img src={photo1} alt="user photo" className="user-photo" />
-      <h5 className="user-description">Takamaru Ayako Jurrien</h5>
+      <img src={photo} alt="user photo" className="user-photo" />
+      <h5 className="user-description">{name}</h5>
       <div className="user-description">
-        <h4>Lead Independent Director Lead Independent Director</h4>
-        <h4>frontend_develop@gmail.com</h4>
-        <h4>+38 (098) 278 44 24</h4>
+        <h4>{position}</h4>
+        <h4>{email}</h4>
+        <h4>{phone}</h4>
       </div>
     </div>
   )

@@ -26,7 +26,7 @@ const RegisterForm = (props: Props) => {
     await axios
       .get('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
       .then((data) => setPositions(data.data.positions))
-      .catch((error) => console.log('error: ', error))
+      .catch((error) => console.log('fetchPositions error: ', error))
 
   useEffect(() => {
     fetchPositions()
