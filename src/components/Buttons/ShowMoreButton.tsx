@@ -1,8 +1,12 @@
 import './Buttons.scss'
 
-type Props = {}
+type Props = { getUsers: () => void }
 
-const ShowMoreButton = (props: Props) => {
-  return <button className="button button-center">Show more</button>
+const ShowMoreButton = ({ getUsers }: Props) => {
+  return (
+    <button className="button button-center" onClick={getUsers}>
+      Show more
+    </button>
+  )
 }
 export default ShowMoreButton

@@ -16,26 +16,37 @@ export type UsersType = {
 type Props = {}
 
 const UsersSection = (props: Props) => {
-  const [users, setUsers] = useState<UsersType[]>()
+  const firstUsersURL =
+    'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6'
 
-  const fetchUsers = async () =>
+  const [users, setUsers] = useState<UsersType[]>([])
+  const [nextUsersLink, setNextUsersLink] = useState<string>(firstUsersURL)
+  const [isShowButton, setIsShowButton] = useState<boolean>(true)
+
+  const getUsers = async () => {
     await axios
-      .get(
-        'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6 '
-      )
-      .then((data) => setUsers(data.data.users))
-      .catch((error) => console.log('fetchUsers error:', error))
+      .get(nextUsersLink)
+      .then((response) => {
+        setUsers([...users, ...response.data.users])
+        const newNextLink = response.data.links.next_url
+        if (newNextLink) {
+          setNextUsersLink(newNextLink)
+        } else if (newNextLink === null) {
+          setIsShowButton(false)
+        }
+      })
+      .catch((error) => console.log('showMoreUsers error:', error))
+  }
 
   useEffect(() => {
-    fetchUsers()
-    console.log('users', users)
+    getUsers()
   }, [])
 
   return (
     <section className="section-gap">
       <SectionTitle>Working with GET request</SectionTitle>
       <UserCards users={users} />
-      <ShowMoreButton />
+      {isShowButton && <ShowMoreButton getUsers={getUsers} />}
     </section>
   )
 }
