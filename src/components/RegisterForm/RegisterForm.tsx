@@ -2,6 +2,7 @@ import axios from 'axios'
 import SignUpButton from '../Buttons/SignUpButton'
 import './RegisterForm.scss'
 import { useState, ChangeEvent, useEffect } from 'react'
+import SectionTitle from '../Typography/SectionTitle/SectionTitle'
 
 type Positions = {
   id: number
@@ -33,61 +34,64 @@ const RegisterForm = (props: Props) => {
   }, [])
 
   return (
-    <div className="form-container">
-      <form action="" method="post" className="register-form">
-        <input
-          type="text"
-          name=""
-          id="name"
-          placeholder="Your name"
-          className="form-input"
-        />
-        <input
-          type="email"
-          name=""
-          id="email"
-          placeholder="Email"
-          className="form-input"
-        />
-        <input
-          type="tel"
-          name=""
-          id="phone"
-          placeholder="Phone"
-          className="form-input"
-        />
-
-        <div className="position-buttons">
-          <p>Select your position</p>
-          <div className="position-buttons-options">
-            {positions?.map((position) => (
-              <div className="radio-button" key={position.id}>
-                <input type="radio" name="position" id={position.name} />
-                <label htmlFor={position.name}>{position.name}</label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="upload-form">
-          <label htmlFor="imageUpload" className="upload-label">
-            <span className="upload-button">Upload</span>
-            <span className="file-name">
-              {selectedFile ? selectedFile.name : 'Upload your photo'}
-            </span>
-          </label>
+    <section className="section-gap">
+      <SectionTitle>Working with POST request</SectionTitle>
+      <div className="form-container">
+        <form action="" method="post" className="register-form">
           <input
-            type="file"
-            id="imageUpload"
-            accept="image/*"
-            className="button-hide"
-            onChange={handleFileChange}
-          ></input>
-        </div>
+            type="text"
+            name=""
+            id="name"
+            placeholder="Your name"
+            className="form-input"
+          />
+          <input
+            type="email"
+            name=""
+            id="email"
+            placeholder="Email"
+            className="form-input"
+          />
+          <input
+            type="tel"
+            name=""
+            id="phone"
+            placeholder="Phone"
+            className="form-input"
+          />
 
-        <SignUpButton />
-      </form>
-    </div>
+          <div className="position-buttons">
+            <p>Select your position</p>
+            <div className="position-buttons-options">
+              {positions?.map((position) => (
+                <div className="radio-button" key={position.id}>
+                  <input type="radio" name="position" id={position.name} />
+                  <label htmlFor={position.name}>{position.name}</label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="upload-form">
+            <label htmlFor="imageUpload" className="upload-label">
+              <span className="upload-button">Upload</span>
+              <span className="file-name">
+                {selectedFile ? selectedFile.name : 'Upload your photo'}
+              </span>
+            </label>
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/*"
+              className="button-hide"
+              onChange={handleFileChange}
+            ></input>
+          </div>
+
+          <SignUpButton />
+        </form>
+      </div>
+    </section>
   )
 }
 export default RegisterForm

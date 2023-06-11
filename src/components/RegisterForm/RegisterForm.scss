@@ -98,6 +98,13 @@
   display: none;
 }
 
+.successImage {
+  margin: 0 auto;
+  img {
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .form-container {
     width: 380px;
