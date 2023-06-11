@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 export type UsersType = {
-  id: number
+  id?: number
   name: string
   email: string
   phone: string
