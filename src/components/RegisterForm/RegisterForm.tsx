@@ -16,9 +16,10 @@ type Props = {
     e: React.ChangeEvent<HTMLInputElement>,
     element: string
   ) => void
+  sendForm: (e: React.ChangeEvent<HTMLFormElement>) => void
 }
 
-const RegisterForm = ({ userData, handleFormData }: Props) => {
+const RegisterForm = ({ userData, handleFormData, sendForm }: Props) => {
   // state for uploading file
   const [selectedFile, setSelectedFile] = useState<any>(null)
 
@@ -47,7 +48,12 @@ const RegisterForm = ({ userData, handleFormData }: Props) => {
     <section className="section-gap">
       <SectionTitle>Working with POST request</SectionTitle>
       <div className="form-container">
-        <form action="" method="post" className="register-form">
+        <form
+          action=""
+          method="post"
+          className="register-form"
+          onSubmit={sendForm}
+        >
           <input
             type="text"
             name=""
