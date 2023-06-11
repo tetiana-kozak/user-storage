@@ -1,48 +1,15 @@
-import axios from 'axios'
+import { UsersType } from '../../../container/Main/Main'
 import ShowMoreButton from '../../Buttons/ShowMoreButton'
 import SectionTitle from '../../Typography/SectionTitle/SectionTitle'
 import UserCards from '../../UserCards/UserCards'
-import { useEffect, useState } from 'react'
-import defaultIMG from '../../../assets/photo-cover.svg'
 
-export type UsersType = {
-  id: number
-  name: string
-  email: string
-  phone: string
-  position: string
-  photo: string
+type Props = {
+  users: UsersType[]
+  isShowButton: boolean
+  getUsers: () => void
 }
 
-type Props = {}
-
-const UsersSection = (props: Props) => {
-  const firstUsersURL =
-    'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6'
-
-  const [users, setUsers] = useState<UsersType[]>([])
-  const [nextUsersLink, setNextUsersLink] = useState<string>(firstUsersURL)
-  const [isShowButton, setIsShowButton] = useState<boolean>(true)
-
-  const getUsers = async () => {
-    await axios
-      .get(nextUsersLink)
-      .then((response) => {
-        setUsers([...users, ...response.data.users])
-        const newNextLink = response.data.links.next_url
-        if (newNextLink) {
-          setNextUsersLink(newNextLink)
-        } else if (newNextLink === null) {
-          setIsShowButton(false)
-        }
-      })
-      .catch((error) => console.log('showMoreUsers error:', error))
-  }
-
-  useEffect(() => {
-    getUsers()
-  }, [])
-
+const UsersSection = ({ users, isShowButton, getUsers }: Props) => {
   return (
     <section className="section-gap">
       <SectionTitle>Working with GET request</SectionTitle>

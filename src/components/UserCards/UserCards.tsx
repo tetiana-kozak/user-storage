@@ -1,6 +1,6 @@
+import { UsersType } from '../../container/Main/Main'
 import UserCard from './UserCard'
 import './UserCards.scss'
-import { UsersType } from '../Sections/UsersSection/UsersSection'
 
 type Props = {
   users?: UsersType[]
