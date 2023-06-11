@@ -1,4 +1,4 @@
-// styles for all document
+// general styles for all document
 
 * {
   font-family: 'Nunito', sans-serif;
@@ -24,22 +24,19 @@ html {
 }
 
 @media (min-width: 360px) {
-  .container {
-    padding: 0 32px;
-  }
 }
 
 @media (min-width: 768px) {
   .container {
-    padding: 0 60px;
+    margin: 0 auto;
+    padding: 0;
+    width: 704px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
     width: 904px;
-    padding: 0;
-    margin: 0 auto;
   }
 }
 
