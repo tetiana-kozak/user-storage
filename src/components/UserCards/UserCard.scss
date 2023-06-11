@@ -14,13 +14,29 @@
     height: 70px;
     border-radius: 50%;
   }
+}
 
-  .user-description {
-    h4 {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-    }
+.line-clamp {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100vw - 32px - 40px);
+}
+
+@media (min-width: 768px) {
+  .line-clamp {
+    max-width: calc((704px - 16px - 20px * 4) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .line-clamp {
+    max-width: calc((904px - 29px * 2 - 20px * 6) / 3);
+  }
+}
+
+@media (min-width: 2560px) {
+  .line-clamp {
+    max-width: calc((1168px - 29px * 2 - 20px * 6) / 3);
   }
 }
