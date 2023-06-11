@@ -3,6 +3,7 @@ import ShowMoreButton from '../../Buttons/ShowMoreButton'
 import SectionTitle from '../../Typography/SectionTitle/SectionTitle'
 import UserCards from '../../UserCards/UserCards'
 import { useEffect, useState } from 'react'
+import defaultIMG from '../../../assets/photo-cover.svg'
 
 export type UsersType = {
   id: number
